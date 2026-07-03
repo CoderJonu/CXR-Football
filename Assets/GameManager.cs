@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
     private int goalsScored = 0;
     private bool isGameOver = false;
     private bool isSpawningBall = false;
+    private bool isSessionActive = false;
+    private float lastGoalTime = -999f;
     private GameObject currentBall;
 
     void Start()
@@ -38,7 +40,7 @@ public class GameManager : MonoBehaviour
         if (resultText != null)
             resultText.gameObject.SetActive(false);
 
-        UpdateUIDisplays();
+        SetSessionUIVisible(false);
     }
 
     void Update()
@@ -61,8 +63,10 @@ public class GameManager : MonoBehaviour
 
     public void GoalScored(GameObject scoredBall)
     {
+        if (Time.time - lastGoalTime < 0.5f) return;
         if (isGameOver || isSpawningBall) return;
 
+        lastGoalTime = Time.time;
         RemoveBall(scoredBall);
 
         goalsScored++;
@@ -119,6 +123,35 @@ public class GameManager : MonoBehaviour
         Invoke(nameof(SpawnFreshBall), 0.2f);
     }
 
+    public void BeginFreePlaySession()
+    {
+        isSessionActive = true;
+        isGameOver = false;
+        isSpawningBall = false;
+        lastGoalTime = -999f;
+        shotsTaken = 0;
+        goalsScored = 0;
+        goalsRemaining = GoalsToWin;
+        timeRemaining = MatchDuration;
+
+        CancelInvoke(nameof(SpawnFreshBall));
+
+        if (currentBall == null)
+            SpawnFreshBall();
+        else
+            ResetExistingBallToKickOff(currentBall);
+
+        UpdateUIDisplays();
+    }
+
+    public void EndFreePlaySession()
+    {
+        CancelInvoke(nameof(SpawnFreshBall));
+        isSpawningBall = false;
+        isSessionActive = false;
+        SetSessionUIVisible(false);
+    }
+
     void RemoveBall(GameObject ballToRemove)
     {
         if (ballToRemove == null)
@@ -131,6 +164,27 @@ public class GameManager : MonoBehaviour
 
             Destroy(ballToRemove);
         }
+    }
+
+    void ResetExistingBallToKickOff(GameObject ballToReset)
+    {
+        if (ballToReset == null)
+            return;
+
+        Rigidbody ballBody = ballToReset.GetComponent<Rigidbody>();
+        if (ballBody != null)
+        {
+            ballBody.velocity = Vector3.zero;
+            ballBody.angularVelocity = Vector3.zero;
+        }
+
+        ball trackedBall = ballToReset.GetComponent<ball>();
+        if (trackedBall != null)
+            trackedBall.HasRegisteredShot = false;
+
+        ballToReset.transform.position = kickOffPosition;
+        ballToReset.transform.rotation = Quaternion.identity;
+        currentBall = ballToReset;
     }
 
     void UpdateUIDisplays()
@@ -153,11 +207,13 @@ public class GameManager : MonoBehaviour
                 goalsLeftText.text = "Goals Needed: " + goalsRemaining;
         }
 
-        if (accuracyText == null)
+        if (accuracyText == null && isSessionActive)
             accuracyText = CreateAccuracyText();
 
         if (accuracyText != null)
         {
+            accuracyText.gameObject.SetActive(isSessionActive);
+
             float accuracy = shotsTaken > 0
                 ? (goalsScored / (float)shotsTaken) * 100f
                 : 0f;
@@ -169,6 +225,21 @@ public class GameManager : MonoBehaviour
                 accuracy
             );
         }
+    }
+
+    void SetSessionUIVisible(bool visible)
+    {
+        if (timerText != null)
+            timerText.gameObject.SetActive(visible && !freePlayMode);
+
+        if (goalsLeftText != null)
+            goalsLeftText.gameObject.SetActive(visible && !freePlayMode);
+
+        if (accuracyText != null)
+            accuracyText.gameObject.SetActive(visible);
+
+        if (resultText != null)
+            resultText.gameObject.SetActive(false);
     }
 
     void EndGame(bool playerWon)

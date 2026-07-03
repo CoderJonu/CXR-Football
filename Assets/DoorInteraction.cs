@@ -10,6 +10,10 @@ public class DoorInteraction : MonoBehaviour
     public int roomNumber = 1;         // Set this to 1 for Room 1, and 2 for Room 2
     public GameObject lobbyCanvas;     // Drag your main lobby canvas here
 
+    [Header("Room Label Visibility")]
+    public GameObject roomLabelToShow;
+    public GameObject[] roomLabelsToHide;
+
     private bool isPlayerNearby = false;
     private bool isInRoom = false;
     private CharacterController charController;
@@ -35,7 +39,16 @@ public class DoorInteraction : MonoBehaviour
         if (other.CompareTag("Player") && !isInRoom)
         {
             isPlayerNearby = true;
-            uiPrompt.SetActive(true);
+            if (uiPrompt != null)
+                uiPrompt.SetActive(true);
+        }
+    }
+
+    void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Player") && !isInRoom)
+        {
+            isPlayerNearby = true;
         }
     }
 
@@ -44,14 +57,19 @@ public class DoorInteraction : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerNearby = false;
-            uiPrompt.SetActive(false);
+            if (uiPrompt != null)
+                uiPrompt.SetActive(false);
         }
     }
 
     void EnterRoom()
     {
         isInRoom = true;
-        uiPrompt.SetActive(false);
+
+        if (uiPrompt != null)
+            uiPrompt.SetActive(false);
+
+        UpdateRoomLabelsForEntry();
 
         // Disabling CharacterController prevents teleportation bugs
         if (charController != null) charController.enabled = false;
@@ -74,5 +92,29 @@ public class DoorInteraction : MonoBehaviour
         }
 
         Debug.Log(gameObject.name + " entered! Initialized functionality for Room " + roomNumber);
+    }
+
+    void UpdateRoomLabelsForEntry()
+    {
+        if (roomLabelsToHide != null)
+        {
+            foreach (GameObject label in roomLabelsToHide)
+            {
+                if (label != null)
+                    label.SetActive(false);
+            }
+        }
+
+        if (roomLabelToShow != null)
+            roomLabelToShow.SetActive(true);
+    }
+
+    public void ResetEntryState()
+    {
+        isInRoom = false;
+        isPlayerNearby = false;
+
+        if (uiPrompt != null)
+            uiPrompt.SetActive(false);
     }
 }

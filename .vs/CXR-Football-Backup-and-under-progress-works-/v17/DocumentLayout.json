@@ -3,11 +3,27 @@
   "WorkspaceRootPath": "D:\\CXR\\CXR-Football-Backup-and-under-progress-works-\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1C35010E-57BF-D9CC-59B6-DBFF70478FD0}|Assembly-CSharp.csproj|d:\\cxr\\cxr-football-backup-and-under-progress-works-\\assets\\roomonegoalieai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1C35010E-57BF-D9CC-59B6-DBFF70478FD0}|Assembly-CSharp.csproj|D:\\CXR\\CXR-Football-Backup-and-under-progress-works-\\assets\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C35010E-57BF-D9CC-59B6-DBFF70478FD0}|Assembly-CSharp.csproj|solutionrelative:assets\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C35010E-57BF-D9CC-59B6-DBFF70478FD0}|Assembly-CSharp.csproj|d:\\cxr\\cxr-football-backup-and-under-progress-works-\\assets\\ngamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C35010E-57BF-D9CC-59B6-DBFF70478FD0}|Assembly-CSharp.csproj|solutionrelative:assets\\ngamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C35010E-57BF-D9CC-59B6-DBFF70478FD0}|Assembly-CSharp.csproj|D:\\CXR\\CXR-Football-Backup-and-under-progress-works-\\assets\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C35010E-57BF-D9CC-59B6-DBFF70478FD0}|Assembly-CSharp.csproj|solutionrelative:assets\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C35010E-57BF-D9CC-59B6-DBFF70478FD0}|Assembly-CSharp.csproj|D:\\CXR\\CXR-Football-Backup-and-under-progress-works-\\assets\\goaldetector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C35010E-57BF-D9CC-59B6-DBFF70478FD0}|Assembly-CSharp.csproj|solutionrelative:assets\\goaldetector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C35010E-57BF-D9CC-59B6-DBFF70478FD0}|Assembly-CSharp.csproj|D:\\CXR\\CXR-Football-Backup-and-under-progress-works-\\assets\\roomonegoalieai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1C35010E-57BF-D9CC-59B6-DBFF70478FD0}|Assembly-CSharp.csproj|solutionrelative:assets\\roomonegoalieai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1C35010E-57BF-D9CC-59B6-DBFF70478FD0}|Assembly-CSharp.csproj|d:\\cxr\\cxr-football-backup-and-under-progress-works-\\assets\\goalieai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1C35010E-57BF-D9CC-59B6-DBFF70478FD0}|Assembly-CSharp.csproj|D:\\CXR\\CXR-Football-Backup-and-under-progress-works-\\assets\\goalieai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1C35010E-57BF-D9CC-59B6-DBFF70478FD0}|Assembly-CSharp.csproj|solutionrelative:assets\\goalieai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -27,10 +43,6 @@
       "RelativeMoniker": "D:0:0:{1C35010E-57BF-D9CC-59B6-DBFF70478FD0}|Assembly-CSharp.csproj|solutionrelative:assets\\exitroominteraction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1C35010E-57BF-D9CC-59B6-DBFF70478FD0}|Assembly-CSharp.csproj|D:\\CXR\\CXR-Football-Backup-and-under-progress-works-\\assets\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1C35010E-57BF-D9CC-59B6-DBFF70478FD0}|Assembly-CSharp.csproj|solutionrelative:assets\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{1C35010E-57BF-D9CC-59B6-DBFF70478FD0}|Assembly-CSharp.csproj|D:\\CXR\\CXR-Football-Backup-and-under-progress-works-\\assets\\doorinteraction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1C35010E-57BF-D9CC-59B6-DBFF70478FD0}|Assembly-CSharp.csproj|solutionrelative:assets\\doorinteraction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -42,11 +54,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
+              "Title": "nGameManager.cs",
+              "DocumentMoniker": "D:\\CXR\\CXR-Football-Backup-and-under-progress-works-\\Assets\\nGameManager.cs",
+              "RelativeDocumentMoniker": "Assets\\nGameManager.cs",
+              "ToolTip": "D:\\CXR\\CXR-Football-Backup-and-under-progress-works-\\Assets\\nGameManager.cs",
+              "RelativeToolTip": "Assets\\nGameManager.cs",
+              "ViewState": "AgIAAIwAAAAAAAAAAAAEwJsAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-01T07:39:02.901Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "RoomOneGoalieAI.cs",
               "DocumentMoniker": "D:\\CXR\\CXR-Football-Backup-and-under-progress-works-\\Assets\\RoomOneGoalieAI.cs",
               "RelativeDocumentMoniker": "Assets\\RoomOneGoalieAI.cs",
@@ -54,12 +79,11 @@
               "RelativeToolTip": "Assets\\RoomOneGoalieAI.cs",
               "ViewState": "AgIAAEMAAAAAAAAAAAAiwGMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-28T12:26:28.74Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-28T12:26:28.74Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "GoalieAI.cs",
               "DocumentMoniker": "D:\\CXR\\CXR-Football-Backup-and-under-progress-works-\\Assets\\GoalieAI.cs",
               "RelativeDocumentMoniker": "Assets\\GoalieAI.cs",
@@ -67,12 +91,11 @@
               "RelativeToolTip": "Assets\\GoalieAI.cs",
               "ViewState": "AgIAADMAAAAAAAAAAAAiwD0AAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-27T05:35:26.734Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-27T05:35:26.734Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 8,
               "Title": "nGoalDetector.cs",
               "DocumentMoniker": "D:\\CXR\\CXR-Football-Backup-and-under-progress-works-\\Assets\\nGoalDetector.cs",
               "RelativeDocumentMoniker": "Assets\\nGoalDetector.cs",
@@ -84,7 +107,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "DefenderBoardAI.cs",
               "DocumentMoniker": "D:\\CXR\\CXR-Football-Backup-and-under-progress-works-\\Assets\\DefenderBoardAI.cs",
               "RelativeDocumentMoniker": "Assets\\DefenderBoardAI.cs",
@@ -96,7 +119,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "DefensiveSystemManager.cs",
               "DocumentMoniker": "D:\\CXR\\CXR-Football-Backup-and-under-progress-works-\\Assets\\DefensiveSystemManager.cs",
               "RelativeDocumentMoniker": "Assets\\DefensiveSystemManager.cs",
@@ -108,7 +131,48 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
+              "Title": "PlayerMovement.cs",
+              "DocumentMoniker": "D:\\CXR\\CXR-Football-Backup-and-under-progress-works-\\Assets\\PlayerMovement.cs",
+              "RelativeDocumentMoniker": "Assets\\PlayerMovement.cs",
+              "ToolTip": "D:\\CXR\\CXR-Football-Backup-and-under-progress-works-\\Assets\\PlayerMovement.cs",
+              "RelativeToolTip": "Assets\\PlayerMovement.cs",
+              "ViewState": "AgIAAD4BAAAAAAAAAAAiwEQBAABLAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-25T07:06:42.435Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "GameManager.cs",
+              "DocumentMoniker": "D:\\CXR\\CXR-Football-Backup-and-under-progress-works-\\Assets\\GameManager.cs",
+              "RelativeDocumentMoniker": "Assets\\GameManager.cs",
+              "ToolTip": "D:\\CXR\\CXR-Football-Backup-and-under-progress-works-\\Assets\\GameManager.cs",
+              "RelativeToolTip": "Assets\\GameManager.cs",
+              "ViewState": "AgIAAL0AAAAAAAAAAAAIwMcAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-01T07:40:41.339Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "GoalDetector.cs",
+              "DocumentMoniker": "D:\\CXR\\CXR-Football-Backup-and-under-progress-works-\\Assets\\GoalDetector.cs",
+              "RelativeDocumentMoniker": "Assets\\GoalDetector.cs",
+              "ToolTip": "D:\\CXR\\CXR-Football-Backup-and-under-progress-works-\\Assets\\GoalDetector.cs",
+              "RelativeToolTip": "Assets\\GoalDetector.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-01T07:42:06.211Z"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "ExitRoomInteraction.cs",
               "DocumentMoniker": "D:\\CXR\\CXR-Football-Backup-and-under-progress-works-\\Assets\\ExitRoomInteraction.cs",
               "RelativeDocumentMoniker": "Assets\\ExitRoomInteraction.cs",
@@ -119,12 +183,8 @@
               "WhenOpened": "2026-06-27T04:41:15.094Z"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 10,
               "Title": "DoorInteraction.cs",
               "DocumentMoniker": "D:\\CXR\\CXR-Football-Backup-and-under-progress-works-\\Assets\\DoorInteraction.cs",
               "RelativeDocumentMoniker": "Assets\\DoorInteraction.cs",
@@ -133,18 +193,6 @@
               "ViewState": "AgIAADAAAAAAAAAAAAAAwEEAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-25T07:49:12.636Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "PlayerMovement.cs",
-              "DocumentMoniker": "D:\\CXR\\CXR-Football-Backup-and-under-progress-works-\\Assets\\PlayerMovement.cs",
-              "RelativeDocumentMoniker": "Assets\\PlayerMovement.cs",
-              "ToolTip": "D:\\CXR\\CXR-Football-Backup-and-under-progress-works-\\Assets\\PlayerMovement.cs",
-              "RelativeToolTip": "Assets\\PlayerMovement.cs",
-              "ViewState": "AgIAABcBAAAAAAAAAAAAwDUBAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-25T07:06:42.435Z"
             }
           ]
         }

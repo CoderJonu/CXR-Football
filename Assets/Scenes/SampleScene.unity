@@ -1056,6 +1056,9 @@ MonoBehaviour:
   shiftSlideSpeed: 6
   forwardCreepSpeed: 0.4
   maxCreepDistanceZ: 8
+  interceptionDistance: 3
+  rotationSpeed: 540
+  closeBallRotationOffset: 90
 --- !u!1 &92699892 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -4332706925441422008, guid: 3c259f47eec2c764f971737a9b11c940, type: 3}
@@ -1952,6 +1955,9 @@ MonoBehaviour:
   shiftSlideSpeed: 6
   forwardCreepSpeed: 0.4
   maxCreepDistanceZ: 8
+  interceptionDistance: 3
+  rotationSpeed: 540
+  closeBallRotationOffset: 90
 --- !u!1 &181365028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2214,6 +2220,8 @@ MonoBehaviour:
   accuracyText: {fileID: 942641615}
   ballPrefab: {fileID: 3437825152090215401, guid: 790bd60dfbfbf9f45b19b4c120b128c8, type: 3}
   spawnPoint: {fileID: 1086733646}
+  matchDuration: 300
+  goalsToWin: 3
 --- !u!1 &207128018
 GameObject:
   m_ObjectHideFlags: 0
@@ -3485,6 +3493,9 @@ MonoBehaviour:
   player: {fileID: 1494745071}
   lobbyCanvas: {fileID: 814950564}
   currentRoomCanvas: {fileID: 814950564}
+  lobbyRoomLabels:
+  - {fileID: 733957269}
+  - {fileID: 1478596597}
 --- !u!65 &337632140
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3662,6 +3673,9 @@ MonoBehaviour:
   player: {fileID: 1494745071}
   lobbyCanvas: {fileID: 814950564}
   currentRoomCanvas: {fileID: 814950564}
+  lobbyRoomLabels:
+  - {fileID: 733957269}
+  - {fileID: 1478596597}
 --- !u!65 &367148235
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5044,11 +5058,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 681adb2a25d00554388707e8918f3223, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiPrompt: {fileID: 1478596597}
+  uiPrompt: {fileID: 0}
   insideSpawnPoint: {fileID: 266686869}
   player: {fileID: 1494745071}
   roomNumber: 1
   lobbyCanvas: {fileID: 0}
+  roomLabelToShow: {fileID: 1478596597}
+  roomLabelsToHide:
+  - {fileID: 733957269}
 --- !u!1 &646526846 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -751476226918971245, guid: 3c259f47eec2c764f971737a9b11c940, type: 3}
@@ -5768,7 +5785,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Room 1
+  m_text: Room 2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6213,6 +6230,9 @@ MonoBehaviour:
   shiftSlideSpeed: 6
   forwardCreepSpeed: 0.4
   maxCreepDistanceZ: 8
+  interceptionDistance: 3
+  rotationSpeed: 540
+  closeBallRotationOffset: 90
 --- !u!1 &781508852 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7696548424635294048, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
@@ -7731,7 +7751,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &963232150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8923,6 +8943,9 @@ MonoBehaviour:
   shiftSlideSpeed: 6
   forwardCreepSpeed: 0.4
   maxCreepDistanceZ: 8
+  interceptionDistance: 3
+  rotationSpeed: 540
+  closeBallRotationOffset: 90
 --- !u!64 &1103414607
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11712,7 +11735,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Room 2
+  m_text: 'Room 1
 
 
 '
@@ -12064,6 +12087,9 @@ MonoBehaviour:
   shiftSlideSpeed: 6
   forwardCreepSpeed: 0.4
   maxCreepDistanceZ: 8
+  interceptionDistance: 3
+  rotationSpeed: 540
+  closeBallRotationOffset: 90
 --- !u!1 &1491663365 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4224636915255053766, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
@@ -12869,11 +12895,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 681adb2a25d00554388707e8918f3223, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiPrompt: {fileID: 733957269}
+  uiPrompt: {fileID: 0}
   insideSpawnPoint: {fileID: 553559717}
   player: {fileID: 1494745071}
-  roomNumber: 1
+  roomNumber: 2
   lobbyCanvas: {fileID: 0}
+  roomLabelToShow: {fileID: 733957269}
+  roomLabelsToHide:
+  - {fileID: 1478596597}
 --- !u!4 &1578894682 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4134505312059479865, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
@@ -13652,6 +13681,9 @@ MonoBehaviour:
   shiftSlideSpeed: 6
   forwardCreepSpeed: 0.4
   maxCreepDistanceZ: 8
+  interceptionDistance: 3
+  rotationSpeed: 540
+  closeBallRotationOffset: 90
 --- !u!1 &1669225210
 GameObject:
   m_ObjectHideFlags: 0
@@ -14476,6 +14508,9 @@ MonoBehaviour:
   shiftSlideSpeed: 6
   forwardCreepSpeed: 0.4
   maxCreepDistanceZ: 8
+  interceptionDistance: 3
+  rotationSpeed: 540
+  closeBallRotationOffset: 90
 --- !u!64 &1701098814
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -14959,6 +14994,9 @@ MonoBehaviour:
   shiftSlideSpeed: 6
   forwardCreepSpeed: 0.4
   maxCreepDistanceZ: 8
+  interceptionDistance: 3
+  rotationSpeed: 540
+  closeBallRotationOffset: 90
 --- !u!1 &1750494423
 GameObject:
   m_ObjectHideFlags: 0
@@ -17456,6 +17494,9 @@ MonoBehaviour:
   shiftSlideSpeed: 6
   forwardCreepSpeed: 0.4
   maxCreepDistanceZ: 8
+  interceptionDistance: 3
+  rotationSpeed: 540
+  closeBallRotationOffset: 90
 --- !u!64 &2046944667
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -17750,6 +17791,9 @@ MonoBehaviour:
   shiftSlideSpeed: 6
   forwardCreepSpeed: 0.4
   maxCreepDistanceZ: 8
+  interceptionDistance: 3
+  rotationSpeed: 540
+  closeBallRotationOffset: 90
 --- !u!64 &2075322665
 MeshCollider:
   m_ObjectHideFlags: 0

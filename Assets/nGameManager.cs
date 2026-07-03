@@ -146,6 +146,7 @@ public class nGameManager : MonoBehaviour
         isRoomActive = true;
         isGameOver = false;
         isSpawningBall = false;
+        lastGoalTime = -999f;
         timeRemaining = matchDuration;
         goalsRemaining = goalsToWin;
         shotsTaken = 0;
@@ -157,6 +158,8 @@ public class nGameManager : MonoBehaviour
 
         if (currentBall == null)
             SpawnFreshBall();
+        else
+            ResetExistingBallToSpawn(currentBall);
 
         Debug.Log("Room 2 challenge started.");
     }
@@ -296,6 +299,7 @@ public class nGameManager : MonoBehaviour
         CancelInvoke(nameof(SpawnFreshBall));
 
         RemoveBall(currentBall);
+        UpdateUIDisplays();
 
         if (playerWon)
         {

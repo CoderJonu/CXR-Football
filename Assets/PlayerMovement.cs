@@ -260,6 +260,7 @@ public class PlayerMovement : MonoBehaviour
             isTimerRunning = false;
             if (roomTwoCanvas != null) roomTwoCanvas.SetActive(false);
             if (roomTwoGameManager != null) roomTwoGameManager.EndRoomTwoChallenge();
+            if (gameManager != null) gameManager.BeginFreePlaySession();
             Debug.Log("Entered Room 1: Free play state initiated.");
         }
         else if (activeRoom == 2)
@@ -270,6 +271,8 @@ public class PlayerMovement : MonoBehaviour
 
             if (roomTwoCanvas != null)
                 roomTwoCanvas.SetActive(true);
+
+            if (gameManager != null) gameManager.EndFreePlaySession();
 
             if (roomTwoGameManager != null)
                 roomTwoGameManager.BeginRoomTwoChallenge();
@@ -289,6 +292,9 @@ public class PlayerMovement : MonoBehaviour
 
             if (roomTwoGameManager != null)
                 roomTwoGameManager.EndRoomTwoChallenge();
+
+            if (gameManager != null)
+                gameManager.EndFreePlaySession();
 
             Debug.Log("Returned to lobby/freeplay state.");
         }
