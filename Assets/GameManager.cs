@@ -110,6 +110,8 @@ public class GameManager : MonoBehaviour
         if (ballPrefab != null && !isGameOver)
         {
             currentBall = Instantiate(ballPrefab, kickOffPosition, Quaternion.identity);
+            ConfigureRoomOneBall(currentBall);
+            NotifyRoomOneGoalies();
         }
     }
 
@@ -185,6 +187,45 @@ public class GameManager : MonoBehaviour
         ballToReset.transform.position = kickOffPosition;
         ballToReset.transform.rotation = Quaternion.identity;
         currentBall = ballToReset;
+        ConfigureRoomOneBall(currentBall);
+        NotifyRoomOneGoalies();
+    }
+
+    void ConfigureRoomOneBall(GameObject activeBall)
+    {
+        if (activeBall == null)
+            return;
+
+        activeBall.name = "Ball";
+
+        try
+        {
+            activeBall.tag = "Ball";
+        }
+        catch (UnityException)
+        {
+            Debug.LogWarning("Tag 'Ball' is missing in Project Settings. Add it so Room 1 systems can track the ball.");
+        }
+
+        ball roomOneBall = activeBall.GetComponent<ball>();
+        if (roomOneBall != null)
+        {
+            roomOneBall.enabled = true;
+            roomOneBall.HasRegisteredShot = false;
+        }
+
+        nBall roomTwoBall = activeBall.GetComponent<nBall>();
+        if (roomTwoBall != null)
+            roomTwoBall.enabled = false;
+    }
+
+    void NotifyRoomOneGoalies()
+    {
+        RoomOneGoalieAI[] goalies = Object.FindObjectsByType<RoomOneGoalieAI>(FindObjectsSortMode.None);
+        foreach (RoomOneGoalieAI goalie in goalies)
+        {
+            goalie.ForceRefreshBallReference();
+        }
     }
 
     void UpdateUIDisplays()

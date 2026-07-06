@@ -18,12 +18,17 @@ public class DefensiveSystemManager : MonoBehaviour
         currentActivePattern = (currentActivePattern + 1) % 3;
 
         // Broadcast pattern shift instantly to all 10 outfield boards
+        ResetBoardsToActivePattern();
+
+        Debug.Log("Goal scored! Shifting defensive positions to Pattern Index: " + currentActivePattern);
+    }
+
+    public void ResetBoardsToActivePattern()
+    {
         DefenderBoardAI[] allBoards = Object.FindObjectsByType<DefenderBoardAI>(FindObjectsSortMode.None);
         foreach (DefenderBoardAI board in allBoards)
         {
-            board.UpdateActivePatternTarget();
+            board.ResetToActivePattern();
         }
-
-        Debug.Log("Goal scored! Shifting defensive positions to Pattern Index: " + currentActivePattern);
     }
 }

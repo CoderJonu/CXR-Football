@@ -25,6 +25,13 @@ public class RoomOneGoalieAI : MonoBehaviour
         LocateBallReference();
     }
 
+    public void ForceRefreshBallReference()
+    {
+        ballTransform = null;
+        ballRb = null;
+        LocateBallReference();
+    }
+
     void Update()
     {
         // Auto-finds Room 1's ball if it gets reset or respawned
@@ -74,6 +81,12 @@ public class RoomOneGoalieAI : MonoBehaviour
         // STRICTLY searches for Room 1's ball name "Ball" or tag "Ball"
         GameObject foundBall = GameObject.Find("Ball");
         if (foundBall == null) foundBall = GameObject.FindWithTag("Ball");
+        if (foundBall == null)
+        {
+            ball activeBall = Object.FindFirstObjectByType<ball>();
+            if (activeBall != null && activeBall.enabled)
+                foundBall = activeBall.gameObject;
+        }
 
         if (foundBall != null)
         {

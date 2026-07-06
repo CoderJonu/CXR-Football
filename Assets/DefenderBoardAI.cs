@@ -52,7 +52,22 @@ public class DefenderBoardAI : MonoBehaviour
         else if (activeIndex == 1) currentMarkerTarget = spotPatternB;
         else if (activeIndex == 2) currentMarkerTarget = spotPatternC;
 
+        if (currentMarkerTarget == null)
+            currentMarkerTarget = spotPatternA;
+
         calculatedZOffset = 0f;
+    }
+
+    public void ResetToActivePattern()
+    {
+        UpdateActivePatternTarget();
+        ForceRefreshBallReference();
+
+        if (currentMarkerTarget == null)
+            return;
+
+        transform.position = currentMarkerTarget.position;
+        transform.rotation = currentMarkerTarget.rotation;
     }
 
     public void ForceRefreshBallReference()

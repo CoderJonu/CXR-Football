@@ -2218,10 +2218,13 @@ MonoBehaviour:
   goalsLeftText: {fileID: 1343196506}
   resultText: {fileID: 1173933743}
   accuracyText: {fileID: 942641615}
+  roomLabelText: {fileID: 0}
   ballPrefab: {fileID: 3437825152090215401, guid: 790bd60dfbfbf9f45b19b4c120b128c8, type: 3}
   spawnPoint: {fileID: 1086733646}
+  roomTwoSpawnPointName: Room2SpawnPoint
   matchDuration: 300
   goalsToWin: 3
+  keepRoomActiveAfterResult: 1
 --- !u!1 &207128018
 GameObject:
   m_ObjectHideFlags: 0
@@ -3961,7 +3964,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.35, y: 1.72}
+  m_AnchoredPosition: {x: 0.35, y: 1.313}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &447344056
@@ -6410,7 +6413,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: 05:00
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6612,7 +6615,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 10
+  m_text: 3
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

@@ -41,16 +41,6 @@ public class nGoalDetector : MonoBehaviour
                 {
                     player.IncreaseRoomTwoGoalCount();
                 }
-
-                // --- 2. SWITCH 10 DEFENDER BOARDS TO THE NEXT BLUE LOCK PATTERN ---
-                if (DefensiveSystemManager.Instance != null)
-                {
-                    DefensiveSystemManager.Instance.CycleDefensivePattern();
-                }
-                else
-                {
-                    Debug.LogWarning("DefensiveSystemManager is missing from the scene! Make sure it is attached to an empty GameObject.");
-                }
             }
 
             // --- ORIGINAL GAME MANAGER CALLS ---
