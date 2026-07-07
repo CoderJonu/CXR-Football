@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class nGameManager : MonoBehaviour
 {
@@ -9,6 +10,10 @@ public class nGameManager : MonoBehaviour
     public TextMeshProUGUI resultText;
     public TextMeshProUGUI accuracyText;
     public TextMeshProUGUI roomLabelText;
+
+    [Header("In-Headset Room 2 HUD")]
+    public float headsetHudDistance = 1.4f;
+    public float headsetHudVerticalOffset = -0.32f;
 
     [Header("Match Settings")]
     public GameObject ballPrefab;
@@ -30,6 +35,10 @@ public class nGameManager : MonoBehaviour
 
     private GameObject currentBall;
     private int lastScoredBallId = 0;
+    private Canvas headsetHudCanvas;
+    private TextMeshProUGUI headsetTimerText;
+    private TextMeshProUGUI headsetGoalsLeftText;
+    private Camera headsetHudCamera;
 
     void Start()
     {
@@ -63,6 +72,7 @@ public class nGameManager : MonoBehaviour
         if (timeRemaining > 0)
         {
             timeRemaining -= Time.deltaTime;
+            PositionHeadsetHudInCamera();
             UpdateUIDisplays();
         }
         else
@@ -319,14 +329,19 @@ public class nGameManager : MonoBehaviour
         int minutes = Mathf.FloorToInt(timeRemaining / 60);
         int seconds = Mathf.FloorToInt(timeRemaining % 60);
 
-        if (roomLabelText != null)
-            roomLabelText.text = "Room 2 Challenge";
+        HideRoomLabelText();
 
         if (timerText != null)
             timerText.text = $"Time Left: {minutes:00}:{seconds:00}";
 
         if (goalsLeftText != null)
             goalsLeftText.text = "Goals Left: " + goalsRemaining;
+
+        if (headsetTimerText != null)
+            headsetTimerText.text = $"Time Left: {minutes:00}:{seconds:00}";
+
+        if (headsetGoalsLeftText != null)
+            headsetGoalsLeftText.text = "Goals Left: " + goalsRemaining;
 
         if (accuracyText != null)
         {
@@ -410,13 +425,118 @@ public class nGameManager : MonoBehaviour
     void SetGameplayUIVisible(bool visible)
     {
         EnsureGameplayTextReferences();
-        SetTextAndParentsVisible(roomLabelText, visible);
+        SetHeadsetHudVisible(visible);
+        HideRoomLabelText();
         SetTextAndParentsVisible(timerText, visible);
         SetTextAndParentsVisible(goalsLeftText, visible);
         SetTextAndParentsVisible(accuracyText, visible);
 
         if (resultText != null)
             resultText.gameObject.SetActive(false);
+    }
+
+    void SetHeadsetHudVisible(bool visible)
+    {
+        if (visible)
+        {
+            EnsureHeadsetHudReferences();
+            PositionHeadsetHudInCamera();
+            UpdateUIDisplays();
+        }
+
+        if (headsetHudCanvas != null)
+            headsetHudCanvas.gameObject.SetActive(visible);
+    }
+
+    void EnsureHeadsetHudReferences()
+    {
+        Camera targetCamera = GetActiveGameplayCamera();
+        if (targetCamera == null)
+            return;
+
+        if (headsetHudCanvas != null && headsetHudCamera == targetCamera)
+            return;
+
+        headsetHudCamera = targetCamera;
+
+        if (headsetHudCanvas == null)
+        {
+            GameObject hudObject = new GameObject("Room2HeadsetHud");
+            headsetHudCanvas = hudObject.AddComponent<Canvas>();
+            headsetHudCanvas.renderMode = RenderMode.WorldSpace;
+            headsetHudCanvas.sortingOrder = 500;
+
+            CanvasScaler scaler = hudObject.AddComponent<CanvasScaler>();
+            scaler.dynamicPixelsPerUnit = 20f;
+
+            hudObject.AddComponent<GraphicRaycaster>();
+
+            RectTransform canvasRect = headsetHudCanvas.GetComponent<RectTransform>();
+            canvasRect.sizeDelta = new Vector2(900f, 180f);
+
+            headsetTimerText = CreateHeadsetHudText("Room2HeadsetTimerText", new Vector2(-215f, 0f), new Vector2(400f, 90f), new Color(0.1f, 0.95f, 1f));
+            headsetGoalsLeftText = CreateHeadsetHudText("Room2HeadsetGoalsLeftText", new Vector2(215f, 0f), new Vector2(400f, 90f), Color.white);
+        }
+
+        headsetHudCanvas.worldCamera = targetCamera;
+    }
+
+    TextMeshProUGUI CreateHeadsetHudText(string objectName, Vector2 anchoredPosition, Vector2 size, Color color)
+    {
+        GameObject textObject = new GameObject(objectName);
+        textObject.transform.SetParent(headsetHudCanvas.transform, false);
+
+        TextMeshProUGUI text = textObject.AddComponent<TextMeshProUGUI>();
+        text.alignment = TextAlignmentOptions.Center;
+        text.fontSize = 44f;
+        text.fontStyle = FontStyles.Bold;
+        text.color = color;
+        text.enableWordWrapping = false;
+        text.overflowMode = TextOverflowModes.Overflow;
+        text.outlineWidth = 0.18f;
+        text.outlineColor = Color.black;
+
+        RectTransform rect = text.rectTransform;
+        rect.anchorMin = new Vector2(0.5f, 0.5f);
+        rect.anchorMax = new Vector2(0.5f, 0.5f);
+        rect.anchoredPosition = anchoredPosition;
+        rect.sizeDelta = size;
+
+        return text;
+    }
+
+    void PositionHeadsetHudInCamera()
+    {
+        EnsureHeadsetHudReferences();
+
+        if (headsetHudCanvas == null || headsetHudCamera == null)
+            return;
+
+        Transform cameraTransform = headsetHudCamera.transform;
+        Transform hudTransform = headsetHudCanvas.transform;
+
+        if (hudTransform.parent != cameraTransform)
+            hudTransform.SetParent(cameraTransform, false);
+
+        hudTransform.localPosition = new Vector3(0f, headsetHudVerticalOffset, headsetHudDistance);
+        hudTransform.localRotation = Quaternion.identity;
+        hudTransform.localScale = Vector3.one * 0.0018f;
+    }
+
+    Camera GetActiveGameplayCamera()
+    {
+        Camera mainCamera = Camera.main;
+        if (mainCamera != null && mainCamera.isActiveAndEnabled)
+            return mainCamera;
+
+        Camera[] cameras = Object.FindObjectsByType<Camera>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+        foreach (Camera candidate in cameras)
+        {
+            if (candidate.isActiveAndEnabled && candidate.gameObject.activeInHierarchy)
+                return candidate;
+        }
+
+        return null;
     }
 
     void SetTextAndParentsVisible(TextMeshProUGUI text, bool visible)
@@ -478,13 +598,15 @@ public class nGameManager : MonoBehaviour
             return;
 
         if (roomLabelText == null)
-            roomLabelText = FindTextByName("Room", "Label", "Room 2") ?? CreateGameplayText("Room2LabelText", new Vector2(0f, 0.42f), new Vector2(1.4f, 0.16f), 0.09f, Color.black);
+            roomLabelText = FindTextByName("Room", "Label", "Room 2");
+
+        HideRoomLabelText();
 
         if (timerText == null)
-            timerText = CreateGameplayText("Room2TimerText", new Vector2(-0.36f, 0.3f), new Vector2(0.8f, 0.16f), 0.07f, Color.black);
+            timerText = CreateGameplayText("Room2TimerText", new Vector2(-0.38f, 0.28f), new Vector2(0.78f, 0.16f), 0.07f, Color.black);
 
         if (goalsLeftText == null)
-            goalsLeftText = CreateGameplayText("Room2GoalsLeftText", new Vector2(0.36f, 0.3f), new Vector2(0.8f, 0.16f), 0.07f, Color.black);
+            goalsLeftText = CreateGameplayText("Room2GoalsLeftText", new Vector2(0.38f, 0.28f), new Vector2(0.78f, 0.16f), 0.07f, Color.black);
 
         if (accuracyText == null)
             accuracyText = CreateGameplayText("Room2AccuracyText", new Vector2(0f, 0.16f), new Vector2(1.6f, 0.16f), 0.06f, Color.black);
@@ -595,10 +717,19 @@ public class nGameManager : MonoBehaviour
 
     void LayoutGameplayTextReferences()
     {
-        ConfigureHudText(roomLabelText, new Vector2(0f, 0.28f), new Vector2(1.2f, 0.14f), 0.09f, TextAlignmentOptions.Center);
-        ConfigureHudText(timerText, new Vector2(-0.28f, 0.12f), new Vector2(0.7f, 0.12f), 0.055f, TextAlignmentOptions.Center);
-        ConfigureHudText(goalsLeftText, new Vector2(0.31f, 0.12f), new Vector2(0.72f, 0.12f), 0.055f, TextAlignmentOptions.Center);
+        HideRoomLabelText();
+        ConfigureHudText(timerText, new Vector2(-0.38f, 0.24f), new Vector2(0.78f, 0.14f), 0.06f, TextAlignmentOptions.Center);
+        ConfigureHudText(goalsLeftText, new Vector2(0.38f, 0.24f), new Vector2(0.78f, 0.14f), 0.06f, TextAlignmentOptions.Center);
         ConfigureHudText(accuracyText, new Vector2(0f, -0.04f), new Vector2(1.22f, 0.12f), 0.045f, TextAlignmentOptions.Center);
+    }
+
+    void HideRoomLabelText()
+    {
+        if (roomLabelText == null)
+            return;
+
+        roomLabelText.text = string.Empty;
+        roomLabelText.gameObject.SetActive(false);
     }
 
     void ConfigureHudText(TextMeshProUGUI text, Vector2 anchoredPosition, Vector2 size, float fontSize, TextAlignmentOptions alignment)

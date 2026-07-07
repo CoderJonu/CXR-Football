@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class DoorInteraction : MonoBehaviour
 {
@@ -18,6 +19,28 @@ public class DoorInteraction : MonoBehaviour
     private bool isInRoom = false;
     private CharacterController charController;
 
+    // Left Controller Trigger
+    private InputAction leftTrigger;
+
+    void Awake()
+    {
+        leftTrigger = new InputAction(
+            "LeftTrigger",
+            InputActionType.Button,
+            "<XRController>{LeftHand}/triggerPressed"
+        );
+    }
+
+    void OnEnable()
+    {
+        leftTrigger.Enable();
+    }
+
+    void OnDisable()
+    {
+        leftTrigger.Disable();
+    }
+
     void Start()
     {
         if (player != null)
@@ -28,7 +51,9 @@ public class DoorInteraction : MonoBehaviour
 
     void Update()
     {
-        if (isPlayerNearby && !isInRoom && Input.GetKeyDown(KeyCode.E))
+        if (isPlayerNearby &&
+            !isInRoom &&
+            (Input.GetKeyDown(KeyCode.E) || leftTrigger.WasPressedThisFrame()))
         {
             EnterRoom();
         }
@@ -39,6 +64,7 @@ public class DoorInteraction : MonoBehaviour
         if (other.CompareTag("Player") && !isInRoom)
         {
             isPlayerNearby = true;
+
             if (uiPrompt != null)
                 uiPrompt.SetActive(true);
         }
@@ -57,6 +83,7 @@ public class DoorInteraction : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerNearby = false;
+
             if (uiPrompt != null)
                 uiPrompt.SetActive(false);
         }
@@ -71,21 +98,22 @@ public class DoorInteraction : MonoBehaviour
 
         UpdateRoomLabelsForEntry();
 
-        // Disabling CharacterController prevents teleportation bugs
-        if (charController != null) charController.enabled = false;
+        // Prevent teleportation bugs
+        if (charController != null)
+            charController.enabled = false;
 
         player.transform.position = insideSpawnPoint.position;
 
-        if (charController != null) charController.enabled = true;
+        if (charController != null)
+            charController.enabled = true;
 
-        // Hide the lobby canvas completely
+        // Hide lobby UI
         if (lobbyCanvas != null)
-        {
             lobbyCanvas.SetActive(false);
-        }
 
-        // Send the room number directly to the player script!
+        // Initialize room-specific gameplay
         PlayerMovement playerMovement = player.GetComponent<PlayerMovement>();
+
         if (playerMovement != null)
         {
             playerMovement.InitializeRoomFunctionality(roomNumber);
